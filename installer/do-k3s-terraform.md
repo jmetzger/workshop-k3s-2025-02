@@ -11,3 +11,7 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+## What permissions for DIGITALOCEAN_TOKEN 
+
+![image](https://github.com/user-attachments/assets/3649258d-d585-48a1-9d1a-a6f5dcd10d42)
