@@ -68,7 +68,11 @@ Ref: https://ubuntu.com/blog/introduction-to-microk8s-part-1-2
 
 ## k3s
 
+### Advantages:
 
+  * alles einer binary
+  * sehr schlankes System (Ressourcenschonend)
+  * Geeignet für kleinere Cluster
 
 ## kind (Kubernetes-In-Docker)
 
