@@ -57,7 +57,18 @@ spec:
 ```        
 
 ```
-kubectl apply -f . 
+kubectl apply -f .
+
+kubectl get svc svc-nginx
+## are there endpoints 
+kubectl describe svc svc-nginx
+kubectl delete -f deploy.yml
+## no endpoints
+kubectl describe svc svc-nginx
+## redeploy
+kubectl apply -f deploy.yml
+## now back again
+kubectl describe svc svc-nginx 
 ```
 
 ## Example II : Short version 
