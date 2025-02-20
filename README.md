@@ -18,7 +18,10 @@
      * [Welches System ? (minikube, micro8ks etc.)](welches-system.md)
      * [Installation - Welche Komponenten from scratch](/kubernetes/installation-components-overview.md)
 
-  1. kubectl ( clients
+  1. Kubernetes - Installation
+     * [Installation eines k3s-clusters auf Digitalocean mit terraform](installer/do-k3s-terraform.md)
+
+  1. kubectl / clients
      * [Practical List of Tools in Linux Ubuntu - Installation](kubectl/ubuntu-installation-list.md)
      * [kubectl einrichten mit namespace](/kubectl/kubectl-einrichten.md)
      * [kubectl cheatsheet kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
