@@ -12,7 +12,7 @@ So there are other tools/distri around helping you with that.
 
 ```
 
-## Kubeadm
+## kubeadm
 
 ### General 
 
