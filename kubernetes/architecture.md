@@ -54,7 +54,7 @@
     * Befinden sich auf dem gleichen Worker Node (virtuellen Server) 
    
 
-## Node (Minion) - components 
+## Worker-Nodes (Minion) - components 
 
 ### General 
 
