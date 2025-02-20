@@ -22,3 +22,9 @@ apple-tln1
 -                    100% |**************************************************************************************************************|    11  0:00:00 ETA
 written to stdout
 ```
+
+## Remark: k3s - full qualified namespace is different 
+
+```
+wget -O -  svc-nginx.default.svc.do_k3s
+```
