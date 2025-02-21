@@ -10,6 +10,23 @@
   * kubectl muss eingerichtet sein
   * helm 
 
+## Walkthrough (Short version) 
+
+```
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install nginx-ingress ingress-nginx/ingress-nginx --namespace ingress --create-namespace
+```
+
+```
+kubectl -n ingress get pods
+kubectl -n ingress get svc
+```
+
+```
+# Now setup wildcard - domain for training purpose 
+*.app1.t3isp.de A 157.245.20.222 
+```
+
 ## Walkthrough (Setup Ingress Controller) 
 
 ```
