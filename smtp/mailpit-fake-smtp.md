@@ -22,4 +22,7 @@ ingress:
 
 ```
 helm -n smtp upgrade --create-namespace --install smtp-server jouve/mailpit -f values.yaml
+kubectl -n smtp get svc,ing
+# Did system find the endpoint  -> pod 
+kubectl -n smtp describe ing 
 ```
