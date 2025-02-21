@@ -33,7 +33,7 @@ metadata:
   name: nfs-csi
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 10.135.0.12
+  server: 10.135.0.18
   share: /var/nfs
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
