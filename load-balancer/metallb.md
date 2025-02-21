@@ -2,5 +2,4 @@
 
 ## Now here:
 
-  * (/metallb/metallb.md)[Metallb - new Version]
-
+  * [New Version of Document - installation with helm](/metallb/metallb.md)
