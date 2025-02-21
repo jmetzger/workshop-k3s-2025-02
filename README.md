@@ -63,7 +63,7 @@
      * [preStopHook](https://www.datree.io/resources/kubernetes-guide-graceful-shutdown-with-lifecycle-prestop-hook)
     
   1. LoadBalancer on Premise (metallb)
-     * [Metallb](load-balancer/metallb.md)
+     * [Metallb (Installation with helm)](metallb/metallb.md)
 
   1. Kubernetes Storage (CSI) 
      * [Überblick Persistant Volumes (CSI)](kubernetes-csi/overview.md)
