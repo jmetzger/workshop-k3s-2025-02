@@ -68,6 +68,7 @@
   1. Kubernetes Storage (CSI) 
      * [Überblick Persistant Volumes (CSI)](kubernetes-csi/overview.md)
      * [Liste der Treiber mit Features (CSI)](https://kubernetes-csi.github.io/docs/drivers.html)
+     * [NFS-Server auf Digitalocean mit Cloud-init installieren](kubernetes-csi/00_install_nfs_server-cloudinit-do.md)
      * [Übung Persistant Storage](kubernetes-csi/nfs-exercise.md)
      * [Beispiel mariadb](kubernetes-csi/example-mariadb.md)
 
