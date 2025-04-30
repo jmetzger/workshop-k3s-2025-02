@@ -10,7 +10,9 @@
 ## Prerequisites 
 
 ```
-# Already done for you 
+# 1. With have setup ingress-controller Service type:LoadBalancer -> external
+# 2. We have a subdomain 
+# 3. Already done for you 
 sudo apt install apache2-utils
 ```
 
