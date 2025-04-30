@@ -47,7 +47,7 @@ installCRDs: true
 ```
 
 ```
-helm install cert-manager jetstack/cert-manager \
+helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace -f cert-manager-values.yml 
 ```
 
@@ -145,7 +145,7 @@ prometheus-node-exporter:
 
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yaml --namespace monitoring --create-namespace --version 71.0.0
+helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yaml --namespace monitoring --create-namespace --version 71.0.0
 ```
 
 ## Step 7: Connect to prometheus from the outside world 
