@@ -96,7 +96,7 @@ grafana:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - grafana.example.com
+      - grafana.<du>.t3isp.de
     path: /
     pathType: Prefix
     tls:
