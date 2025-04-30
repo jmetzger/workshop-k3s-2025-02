@@ -124,7 +124,8 @@
      
   1. Kubernetes Monitoring 
      * [Prometheus Monitoring Server (Overview)](prometheus/overview.md)
-     * [Prometheus / Grafana Stack installieren](prometheus-grafana/install-with-helm.md)
+     * [Prometheus / Grafana Stack installieren - Simple](prometheus-grafana/install-with-helm.md)
+     * [Prometheus / Grafana Stack installieren - Advanced mit basic auth und tls](prometheus-grafana/install-with-helm-letsencrypt-basic-auth.md)
      * [Prometheus / blackbox exporter](prometheus-grafana/z_blackbox-exporter.md)
 
   1. Tipps & Tricks 
