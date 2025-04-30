@@ -146,6 +146,16 @@ prometheus:
 ## Step 8: annotation in service einfügen 
 
 ```
+cd
+cd manifests
+cd abi
+```
+
+```
+nano apple.yaml
+```
+
+```
 kind: Service
 apiVersion: v1
 metadata:
@@ -164,7 +174,7 @@ spec:
 
 
 ```
-kubectl apply -f service.yml
+kubectl apply -f .
 ```
 
 ## Step 9: Look into Status -> Discovery Services and wait
