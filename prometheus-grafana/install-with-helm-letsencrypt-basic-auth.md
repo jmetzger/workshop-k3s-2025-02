@@ -4,7 +4,8 @@
 
 ## What do we want to do ? 
 
-  * We want to protect prometheus with basic-auth 
+  * We want to protect prometheus with basic-auth
+  * We want to use letsencrypt 
 
 ## Prerequisites 
 
@@ -31,30 +32,107 @@ htpasswd -c auth admin  # Enter your desired password
 kubectl create secret generic prometheus-basic-auth --from-file=auth -n monitoring
 ```
 
-
-
-## Step 1: Prepare values-file  
+## Step 3: Install cert-manager  
 
 ```
-cd
-mkdir -p manifests 
-cd manifests 
-mkdir -p monitoring 
-cd monitoring 
+helm repo add jetstack https://charts.jetstack.io
 ```
 
 ```
-vi values.yml 
+nano cert-manager-values.yml 
 ```
 
 ```
-fullnameOverride: prometheus
+installCRDs: true 
+```
+
+```
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager --create-namespace -f cert-manager-values.yml 
+```
+
+## Step 4: Create ClusterIssuer 
+
+```
+nano clusterissuer.yaml
+```
+
+```
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: your-email@example.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+```
+
+```
+kubectl apply -f cluster-issuer.yaml 
+```
+
+## Install Monitoring stack 
+
+```
+nano monitoring-values.yaml
+```
+
+```
+grafana:
+  fullnameOverride: grafana
+  enabled: true
+  adminUser: admin
+  adminPassword: "yourStrongPassword"
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - grafana.example.com
+    path: /
+    pathType: Prefix
+    tls:
+      - hosts:
+          - grafana.<du>.t3isp.de
+        secretName: grafana-tls
+
+prometheus:
+  fullnameOverride: prometheus 
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
+      nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - prometheus.<du>.t3isp.de
+    paths:
+      - /
+    pathType: Prefix
+    tls:
+      - hosts:
+          - prometheus.<du>.t3isp.de
+        secretName: prometheus-tls
+
+# Optional: Persist data
+prometheusOperator:
+  admissionWebhooks:
+    enabled: true
 
 alertmanager:
   fullnameOverride: alertmanager
-
-grafana:
-  fullnameOverride: grafana
+  ingress:
+    enabled: false  # Disable if not needed
 
 kube-state-metrics:
   fullnameOverride: kube-state-metrics
@@ -67,57 +145,20 @@ prometheus-node-exporter:
 
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/kube-prometheus-stack -f values.yml --namespace monitoring --create-namespace --version 61.3.1
+helm install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yml --namespace monitoring --create-namespace --version 61.3.1
 ```
 
 ## Step 3: Connect to prometheus from the outside world 
 
-### Step 3.1: Start proxy to connect (to on Linux Client)
-
 ```
-# this is shown in the helm information 
-helm -n monitoring get notes prometheus
-
-# Get pod that runs prometheus 
-kubectl -n monitoring get service 
-kubectl -n monitoring port-forward svc/prometheus-prometheus 9090 &
-
-```
-
-### Step 3.2: Start a tunnel in (from) your local-system to the server 
-
-```
-ssh -L 9090:localhost:9090 tln1@164.92.129.7
-```
-
-### Step 3.3: Open prometheus in your local browser 
-
-```
-# in browser
-http://localhost:9090 
+https://prometheus.<du>.t3isp.de
 ```
 
 ## Step 4: Connect to the grafana from the outside world 
 
-### Step 4.1: Start proxy to connect 
-
 ```
-# Do the port forwarding 
-# Adjust your pods here
-kubectl -n monitoring get pods | grep grafana 
-kubectl -n monitoring port-forward grafana-56b45d8bd9-bp899 3000 &
+https://grafana.<du>.t3isp.de
 ```
-
-### Step 4.2: Start a tunnel in (from) your local-system to the server 
-
-```
-ssh -L 3000:localhost:3000 tln1@164.92.129.7
-```
-
-
-
-
-
 
 ## References:
 
