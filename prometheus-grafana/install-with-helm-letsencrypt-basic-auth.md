@@ -148,13 +148,13 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yml --namespace monitoring --create-namespace --version 61.3.1
 ```
 
-## Step 3: Connect to prometheus from the outside world 
+## Step 7: Connect to prometheus from the outside world 
 
 ```
 https://prometheus.<du>.t3isp.de
 ```
 
-## Step 4: Connect to the grafana from the outside world 
+## Step 8: Connect to the grafana from the outside world 
 
 ```
 https://grafana.<du>.t3isp.de
