@@ -145,7 +145,7 @@ prometheus-node-exporter:
 
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yml --namespace monitoring --create-namespace --version 61.3.1
+helm install prometheus prometheus-community/kube-prometheus-stack -f monitoring-values.yaml --namespace monitoring --create-namespace --version 71.0.0
 ```
 
 ## Step 7: Connect to prometheus from the outside world 
