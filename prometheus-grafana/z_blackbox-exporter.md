@@ -42,6 +42,50 @@ probe_http_status_code 200
 ## Step 4: Test apple-service with Curl 
 
 ```
+mkdir -p manifests
+cd manifests
+mkdir abi
+cd abi
+nano apple.yaml
+```
+
+
+```
+# apple.yml 
+# vi apple.yml 
+kind: Pod
+apiVersion: v1
+metadata:
+  name: apple-app
+  labels:
+    app: apple
+spec:
+  containers:
+    - name: apple-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=apple-jedermann"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: apple-service
+spec:
+  selector:
+    app: apple
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5678 # Default port for image
+```
+
+```
+kubectl apply -f .
+```
+
+
+```
 # From within curlimages/curl pod 
 curl http://my-prometheus-blackbox-exporter.monitoring:9115/probe?target=apple-service.app&module=http_2xx
 ```
