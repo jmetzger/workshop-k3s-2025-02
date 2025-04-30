@@ -78,7 +78,7 @@ spec:
 kubectl apply -f clusterissuer.yaml 
 ```
 
-## Install Monitoring stack 
+## Step 5: Prepare Monitoring Stack (values - file) 
 
 ```
 nano monitoring-values.yaml
@@ -141,7 +141,7 @@ prometheus-node-exporter:
   fullnameOverride: node-exporter
 ```
 
-## Step 2: Install with helm 
+## Step 6: Install with helm 
 
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
