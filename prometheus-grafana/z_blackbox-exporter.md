@@ -90,7 +90,7 @@ kubectl run -it --rm curltest --image=curlimages/curl -- sh
 
 ```
 # From within curlimages/curl pod 
-curl http://my-prometheus-blackbox-exporter.monitoring:9115/probe?target=apple-service.app&module=http_2xx
+curl http://my-prometheus-blackbox-exporter.monitoring:9115/probe?target=apple-service.default&module=http_2xx
 ```
 
 
