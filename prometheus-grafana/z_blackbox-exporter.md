@@ -84,6 +84,9 @@ spec:
 kubectl apply -f .
 ```
 
+```
+kubectl run -it --rm curltest --image=curlimages/curl -- sh 
+```
 
 ```
 # From within curlimages/curl pod 
