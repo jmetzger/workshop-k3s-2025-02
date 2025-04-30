@@ -1,4 +1,4 @@
-# Prometheus with Grafana (Install with helm)
+# Prometheus with Grafana, letsencrypt and basic auth for prometheus (Install with helm)
 
   * using the kube-prometheus-stack (recommended !: includes important metrics)
 
