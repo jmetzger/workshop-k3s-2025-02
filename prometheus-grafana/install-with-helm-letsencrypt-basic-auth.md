@@ -2,6 +2,37 @@
 
   * using the kube-prometheus-stack (recommended !: includes important metrics)
 
+## What do we want to do ? 
+
+  * We want to protect prometheus with basic-auth 
+
+## Prerequisites 
+
+```
+# Already done for you 
+sudo apt install apache2-utils
+```
+
+## Step 1: Create our project - folder (just to be organized) 
+
+```
+cd
+mkdir -p manifests 
+cd manifests 
+mkdir -p monitoring 
+cd monitoring 
+```
+
+## Step 2: Create basic-auth  
+
+```
+kubectl create ns monitoring 
+htpasswd -c auth admin  # Enter your desired password
+kubectl create secret generic prometheus-basic-auth --from-file=auth -n monitoring
+```
+
+
+
 ## Step 1: Prepare values-file  
 
 ```
