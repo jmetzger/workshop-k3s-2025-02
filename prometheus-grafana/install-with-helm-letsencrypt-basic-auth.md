@@ -75,7 +75,7 @@ spec:
 ```
 
 ```
-kubectl apply -f cluster-issuer.yaml 
+kubectl apply -f clusterissuer.yaml 
 ```
 
 ## Install Monitoring stack 
