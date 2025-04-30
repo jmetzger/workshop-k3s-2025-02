@@ -189,7 +189,7 @@ kubectl apply -f .
 ## Step 11: Hauptseite (status code 200) 
 
   * Metrik angekommen `?
-  * http://64.227.125.201:30090/graph?g0.expr=probe_http_status_code&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
+  * https://prometheus.<du>.t3isp.de/graph?g0.expr=probe_http_status_code&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
 
 ## Step 12: pod vom service stoppen
 
